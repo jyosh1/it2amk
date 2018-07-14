@@ -1,0 +1,48 @@
+<b><big><big>Command Line Arguments</big></big></b><br>
+<br>
+There are several optional command line arguments that you can use. Here is the list of them in Alpha v1.0, copied from example4.it: <br>
+<br>
+<code>--author   "Author Name" .......... -- Specifies the author's name <br>
+--game "Game Name" .............. -- Specifies the game name <br>
+--length "m:ss" ................. -- Specifies the song length <br>
+--legato True or False........... -- Specifies whether or not to apply $F4 $02 (True by default) <br>
+--echo XXYYLLRR ................. -- Specifies the echo flags: XXYYLLRR. XX = Delay, WW = Feedback, LL = Echo left volume, RR = Echo right volume <br>
+--fir 1122334455667788 .......... -- Specifies 8 byte FIR coefficients <br>
+--tmult n ....................... -- Specifies the tempo and note length multiplier for the song. Decimals allowed. Default value is 2. <br>
+--resample n .................... -- Specifies a constant multiplier for all the sample rates. In this example, all samples are shrunk to 90% of their original length. <br>
+--amplify n ..................... -- Specifies a constant multiplier for all the sample amplitudes. From 0.0 to 1.0. Default is 0.9. (Any higher than 0.9 is not recommended because of clipping.) <br>
+--vmult n ....................... -- Specifies a constant multiplier for all v levels in the MML. Anything above v255 gets $FA $03 $XX applied to it. <br>
+--master LLRR ................... -- Specifies the master volume level. LLRR. LL = Left level, RR = Right level <br>
+--addmml P:C:R:T:"MML String".... -- Adds an text string to the MML. Format: P:C:R:T:"MML String". P = Pattern number, C = Channel number (counting from 1), R = Row number, T = Subtick within row. (All in decimal) <br>
+</code><br>
+For more concrete examples of these, take a look at the Comments tab in example4.it <br>
+<br>
+<b><big><big>Comments Tab</big></big></b><br>
+<br>
+The above Command Line arguments can also be embedded within the module itself, in the song comments. <br>
+Anything wrapped in backticks `` will be treated as a command line argument. <br>
+For example, consider the following comment: <br>
+<br>
+<code>This is a comment `--tmult 4.0`</code> <br>
+<br>
+This will apply the command line argument <i>tmult</i> with a tempo multiplier value of 4.0. <br>
+<br>
+<b><big><big>Instruments Tab</big></big></b><br>
+<br>
+Each instrument in your module can have certain parameters associated with them that are translated in a meaningful way in the MML. <br>
+You can, for example, have an instrument with echo, pitch modulation, noise, etc. <br>
+To utilize these parameters, you use the text in the Instrument name/file name fields, surrounding the parameters using backticks ``. <br>
+The following are valid parameters that can be used for custom instruments: <br>
+<br>
+<code>aDASRGA .............. -- Override volume envelope with custom ADSR/GAIN. Format is the same as the instrument table definition. Example: `aDFA07F` becomes $DF $A0 $7F. <br>
+e .................... -- Enable echo for this instrument. <br>
+i .................... -- Invert volume on both left and right speakers for this instrument. <br>
+n .................... -- Enable noise for this instrument. (Recommended to be used with the provided noise.iti or the noise instrument in smw_template.it) <br>
+p .................... -- Enable pitch modulation for this instrument. <br>
+rDASRGA .............. -- Release ADSR/GAIN envelope to use for this instrument whenever there is a note fade. Same format as the <i>a</i> parameter. <br>
+</code> <br>
+Examples: <br>
+<br>
+Instrument name: <code>`ep`</code> -- Enable both echo and pitch modulation on this instrument. <br>
+Instrument name: <code>`a00007Fr7FB000`</code> -- Set instrument GAIN to $7F and release ADSR to $7F $B0. <br>
+Instrument name: <code>`a54D600einp`</code> -- Set instrument ADSR to $54 $D6, invert volume levels, and enable echo, noise and pitch modulation for this instrument.

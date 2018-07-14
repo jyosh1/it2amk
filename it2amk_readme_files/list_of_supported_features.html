@@ -1,0 +1,703 @@
+The following is a list of the supported IT features in it2amk version Alpha 1.0: <br>
+<br>
+<b><big><big>Pattern Editor</big></big></b><br>
+<br>
+<table style="width:70%">
+	<tr>
+		<th>Feature</th>
+		<th>Supported?</th>
+		<th>Notes</th>
+	</tr>
+	<tr>
+		<td>Initial Tempo</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Initial Speed</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Initial Global Volume</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Initial Mixing Volume</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Initial Per-Channel Volume/Panning/Surround</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>More Than 8 Channels</td>
+		<td>Limited</td>
+		<td>it2amk can process any global effects on channels 9-64 (such as tempo), but anything that would produce sound is completely ignored.</td>
+	</tr>
+</table>
+<br>
+Effect Column: <br>
+<br>
+<table style="width:50%">
+	<tr>
+		<th>Effect</th>
+		<th>Name</th> 
+		<th>Supported?</th>
+		<th>Notes</th>
+	</tr>
+	<tr>
+		<td>Axx</td>
+		<td>Set Speed</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Bxx</td>
+		<td>Position Jump</td> 
+		<td>Yes</td>
+		<td>Will set song loop point in MML if jumping to a previous pattern.</td>
+	</tr>
+	<tr>
+		<td>Cxx</td>
+		<td>Pattern Break</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>D0x</td>
+		<td>Volume Slide Down</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Dx0</td>
+		<td>Volume Slide Up</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>DFx</td>
+		<td>Fine Volume Slide Down</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>DxF</td>
+		<td>Fine Volume Slide Up</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Exx</td>
+		<td>Portamento Down</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>EFx</td>
+		<td>Fine Portamento Down</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>EEx</td>
+		<td>Extra Fine Portamento Down</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Fxx</td>
+		<td>Portamento Up</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>FFx</td>
+		<td>Fine Portamento Up</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>FEx</td>
+		<td>Extra Fine Portamento Up</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Gxx</td>
+		<td>Tone Portamento</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Hxx</td>
+		<td>Vibrato</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Ixx</td>
+		<td>Tremor</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Jxy</td>
+		<td>Arpeggio</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Kxy</td>
+		<td>Volume Slide + Vibrato</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Lxy</td>
+		<td>Volume Slide + Tone Portamento</td> 
+		<td>Partially</td>
+		<td>The volume slide portion of this is implemented. The portamento is not.</td>
+	</tr>
+	<tr>
+		<td>Mxx</td>
+		<td>Set Channel Volume</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Nxy</td>
+		<td>Channel Volume Slide</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Oxx</td>
+		<td>Sample Offset</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>P0x</td>
+		<td>Panning Slide Right</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Px0</td>
+		<td>Panning Slide Left</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>PFx</td>
+		<td>Fine Panning Slide Right</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>PxF</td>
+		<td>Fine Panning Slide Left</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Qxy</td>
+		<td>Retrigger</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Rxy</td>
+		<td>Tremolo</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S1x</td>
+		<td>Glissando Control</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S3x</td>
+		<td>Set Vibrato Waveform</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S4x</td>
+		<td>Tremolo Waveform</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S5x</td>
+		<td>Panbrello Waveform</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S6x</td>
+		<td>Fine Pattern Delay</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S70</td>
+		<td>Past Note Cut</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S71</td>
+		<td>Past Note Off</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S72</td>
+		<td>Past Note Fade</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S73</td>
+		<td>NNA Note Cut</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S74</td>
+		<td>NNA Note Continue</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S75</td>
+		<td>NNA Note Off</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S76</td>
+		<td>NNA Note Fade</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S77</td>
+		<td>Volume Envelope Off</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S78</td>
+		<td>Volume Envelope On</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S79</td>
+		<td>Pan Envelope Off</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S7A</td>
+		<td>Pan Envelope On</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S7B</td>
+		<td>Pitch Envelope Off</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S7C</td>
+		<td>Pitch Envelope On</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S8x</td>
+		<td>Set Panning</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S90</td>
+		<td>Surround Sound Off</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>S91</td>
+		<td>Surround Sound On</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>SAx</td>
+		<td>High Offset</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>SB0</td>
+		<td>Pattern Loop Start</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>SBx</td>
+		<td>Pattern Loop</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>SCx</td>
+		<td>Note Cut</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>SDx</td>
+		<td>Note Delay</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>SEx</td>
+		<td>Pattern Delay</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>SFx</td>
+		<td>Set Active Macro</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>T0x</td>
+		<td>Decrease Tempo</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>T1x</td>
+		<td>Increase Tempo</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Txx</td>
+		<td>Set Tempo</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Uxy</td>
+		<td>Fine Vibrato</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Vxx</td>
+		<td>Set Global Volume</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Wxy</td>
+		<td>Global Volume Slide</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Xxx</td>
+		<td>Set Panning</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Yxy</td>
+		<td>Panbrello</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Zxx</td>
+		<td>Lowpass Filter</td> 
+		<td>No</td>
+		<td>Instead, Zxx controls GAIN.</td>
+	</tr>
+</table>
+<br>
+Volume Column: <br>
+<br>
+<table style="width:50%">
+	<tr>
+		<th>Effect</th>
+		<th>Name</th> 
+		<th>Supported?</th>
+		<th>Notes</th>
+	</tr>
+	<tr>
+		<td>axx</td>
+		<td>Fine Volume Slide Up</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>bxx</td>
+		<td>Fine Volume Slide Down</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>cxx</td>
+		<td>Volume Slide Up</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>dxx</td>
+		<td>Volume Slide Down</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>exx</td>
+		<td>Portamento Down</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>fxx</td>
+		<td>Portamento Up</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>gxx</td>
+		<td>Tone Portamento</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>hxx</td>
+		<td>Vibrato Depth</td> 
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>pxx</td>
+		<td>Set Panning</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>vxx</td>
+		<td>Set Volume</td> 
+		<td>Yes</td>
+		<td></td>
+	</tr>
+</table>
+<br>
+<b><big><big>Sample Editor</big></big></b><br>
+<br>
+<table style="width:50%">
+	<tr>
+		<th>Feature</th>
+		<th>Supported?</th>
+		<th>Notes</th>
+	</tr>
+	<tr>
+		<td>Looped Samples</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Ping-Looped Samples</td>
+		<td>Yes</td>
+		<td>Ping-loop will be "unrolled" and looped portion of sample will be twice as large in ARAM.</td>
+	</tr>
+	<tr>
+		<td>Sustain Loops</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>16-bit Samples</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>8-bit Samples</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Mono Samples</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Stereo Samples</td>
+		<td>No</td>
+		<td>Stereo samples will be merged into a mono sample.</td>
+	</tr>
+	<tr>
+		<td>Unsigned Samples</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Signed Samples</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Global Volume</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Default Volume</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Default Panning</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>C5 Speed/Sample Rate</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Compressed Samples</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Sample Vibrato</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+</table>
+<br>
+<b><big><big>Instrument Editor</big></big></b><br>
+<br>
+<table style="width:70%">
+	<tr>
+		<th>Feature</th>
+		<th>Supported?</th>
+		<th>Notes</th>
+	</tr>
+	<tr>
+		<td>Global Volume</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Default Panning</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Fade Out</td>
+		<td>Partially</td>
+		<td>Works for quicker fades. Longer fades may cause bugs.</td>
+	</tr>
+	<tr>
+		<td>Pitch/Pan Separation</td>
+		<td>Yes</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Random Volume Variation</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Random Panning Variation</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Reso Filter</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Cutoff Filter</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>New Note Actions</td>
+		<td>No</td>
+		<td>Note Cut Only.</td>
+	</tr>
+	<tr>
+		<td>Duplicate Check/Action</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>MIDI</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Multi-sampled Instruments</td>
+		<td>Yes</td>
+		<td>AMK still has to change instrument depending on pitch. Could bloat insert size in some cases.</td>
+	</tr>
+	<tr>
+		<td>Volume Envelopes</td>
+		<td>Partially</td>
+		<td>it2amk will try to approximate hardware ADSR values for volume envelopes. This means that some envelope shapes can't be approximated accurately, however.</td>
+	</tr>
+	<tr>
+		<td>Panning Envelopes</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Pitch Envelopes</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Filter Envelopes</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Envelope Loops</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Envelope Sustain Loops</td>
+		<td>Partially</td>
+		<td>Volume only.</td>
+	</tr>
+	<tr>
+		<td>Envelope Carry</td>
+		<td>No</td>
+		<td></td>
+	</tr>
+</table>

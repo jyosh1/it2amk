@@ -1,0 +1,25 @@
+<b><big><big>Setup</big></big></b><br>
+<br>
+1. Install python 3.6 (or any later version of 3.x. Earlier versions of 3.x may also work but they are untested.): <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> <br>
+2. Open up your python directory. Rename "python.exe" to "python3.exe". <br>
+3. Copy the path of your python directory and add it to <a href="https://helpdeskgeek.com/windows-10/add-windows-path-environment-variable/">your Windows PATH environment variable</a>. <br>
+4. Install <a href="https://www.microsoft.com/en-us/download/details.aspx?id=40779">Microsoft .NET Framework 4.5.1</a> (Or any later version). <br>
+<br>
+<b><big><big>Converting to MML</big></big></b><br>
+<br>
+1. Open cmd. <br>
+2. Type: <i>cd "path to it2amk folder"</i> <br>
+3. Type: <i>python3 it2amk.py "your_module.it"</i> <br>
+4. A file named "your_module.mml" should appear in the music folder, along with a folder named "your_module" in the samples folder, containing all the necessary .brr files. <br>
+5. Your song is all ready to be inserted with AddMusicK! Simply copy the mml file over to AMK's music folder, and your "your_module" folder over to AMK's sample folder, add your_module.mml to AddMusic_list.txt, and run AMK. <br>
+<br>
+<b><big><big>Using it2amk.bat</big></big></b><br>
+<br>
+Instead of typing multiple commands to run the converter, run AMK, and play your SPC, it2amk.bat allows you to do all of that in a single cmdline command! <br>
+All you have to do is the following: <br>
+1. Copy the entire it2amk folder into your AddMusicK folder. (Works with the original or the beta) (Merge any folders if Windows prompts you.) <br>
+2. Place any modules you want to convert into the modules folder. <br>
+3. Add the filenames of the modules you want to convert to Addmusic_list.txt, with .mml as the extension (So for example, if your file was named goose.it, you would add goose.mml to the list.) <br>
+4. Grab an AMK-prepared ROM and rename it <i>"music.smc"</i>. <br>
+5. Type <i>it2amk.bat "your_module"</i>. Do not add the .it extension to the module name. Do not prefix it with the modules folder. If your file is goose.it, you type <i>it2amk.bat goose</i> <br>
+6. That's it! If all goes well, you should get an SPC in a few seconds. <br>
