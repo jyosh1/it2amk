@@ -1817,6 +1817,6 @@ while i < len(sys.argv):
 try:
 	evtbl = EventTable(it)
 	mml = MML(evtbl)
-	mml.save('music/' + sys.argv[1].split('.')[0].replace('\\', '/').split('/')[-1] + '.mml')
+	mml.save('music/' + sys.argv[1].split('.')[0].replace('\\', '/').split('/')[-1] + '.txt')
 except CompileErrorException as e:
 	print('Error:', e)
