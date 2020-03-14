@@ -6,6 +6,77 @@ import subprocess
 import os
 import operator
 
+#TODO: Make it so it outputs everything up one directory so the file structure can be AddMusicK/it2amk instead of having to copy the results every heckin time
+#TODO: Alternately, add functions to copy the contents of it2amk/music and it2amk/samples into AddMusicK/music and AddMusicK/samples?
+
+previous_textfile_filename = "it2amk_last_run.txt" #this is gonna make things a heck of a lot easier
+
+def main():
+	global module_path
+	if (len(sys.argv)) < 2:
+		print('Usage: python it2amk.py <module_file> <flags>')
+		if os.path.exists(previous_textfile_filename):
+			run_previous = input('Would you like to re-run the last module? ')
+			if (run_previous[0].lower()) == "y":
+				module_path = get_previous_module() #read the module path from the text file
+			else:
+				module_path = prompt_user_for_module() #ask the user for a new module path
+		else:
+			module_path = prompt_user_for_module() #the text file doesn't exist yet
+	elif len(sys.argv) >= 2 and len(sys.argv) % 2 != 0:
+		print('Error: Missing flag argument.')
+		sys.exit(1)
+	else:
+		module_path = sys.argv[1] #use the module path from the command line arguments
+
+	it = pyIT.ITfile()
+	it.open(module_path)
+	Config.get_module_flags(it)
+
+	i = 2
+	while i < len(sys.argv):
+		flag = sys.argv[i]
+		arg = sys.argv[i + 1]
+
+		try:
+			Config.set_flag(flag, arg)
+		except ValueError as e:
+			print('Error: ' + str(e))
+			sys.exit(1)
+		except KeyError as e:
+			print('Error: ' + str(e))
+			sys.exit(1)
+
+		i += 2
+
+	try:
+		evtbl = EventTable(it)
+		mml = MML(evtbl)
+		mml.save('music/' + module_path.split('.')[0].replace('\\', '/').split('/')[-1] + '.txt')
+	except CompileErrorException as e:
+		print('Error:', e)
+
+def get_previous_module():
+	with open(previous_textfile_filename, "r") as file:
+		result = file.read()
+	return result
+
+def prompt_user_for_module():
+	result = input("Module to convert: ")
+	if not os.path.exists(result):
+		print("That module does not exist.")
+		print("Don't forget to put modules/ before the filename if that's where you saved it!")
+		sys.exit(1)
+	save_previous_textfile(result)
+	return result
+
+def save_previous_textfile(result):
+	with open(previous_textfile_filename, "w") as file:
+		file.write(result)
+
+##########################################################################################################
+## The rest of this file is classes that should probably be moved into seperate files eventually
+
 class CompileErrorException(Exception):
     pass
 
@@ -672,7 +743,7 @@ class EventTable:
 				else:
 					use_string += '0'
 					
-			arg_list = ['sampconv.exe', sys.argv[1], use_string]
+			arg_list = ['sampconv.exe', module_path, use_string]
 			
 			# Add resample and amplify ratios
 			for s in range(0, len(self.module.Samples)):
@@ -683,10 +754,9 @@ class EventTable:
 				
 			subprocess.call(arg_list)
 		
-		f = open('temp/tunings.txt', 'r')
-		lines = f.readlines()
-		f.close()
-		
+		with open('temp/tunings.txt', 'r') as file: #If the temp folder doesn't exist, it errors out here.
+			lines = file.readlines()
+
 		used_list = sorted(list(self.used_samples))
 		sample_dict = {}
 		
@@ -891,9 +961,8 @@ class EventTable:
 			txt = ''.join((txt, '#' + str(c) + '\n'))
 			for e in self.events[c]:
 				txt = ''.join((txt, '    ' + str((e.tick, e.effect, e.value)) + '\n'))
-		#file = open('event_table.txt', 'w')
-		#file.write(txt)
-		#file.close()
+		#with open("event_table.txt", 'w') as file:
+			#file.write(txt)
 
 class MMLState:
 	def __init__(self):
@@ -993,7 +1062,7 @@ class MML:
 			self.txt = ''.join((self.txt, spc_text))
 			
 	def add_sample_info(self):
-		path = sys.argv[1].replace('\\', '/').split('/')[-1].split('.')[0]
+		path = module_path.replace('\\', '/').split('/')[-1].split('.')[0]
 		sample_text = '#path ' + '"' + path + '"' + '\n\n' + '#samples\n{\n'
 		add_sample_header = False
 		
@@ -1783,40 +1852,8 @@ class MML:
 			self.append('\n\n')
 		
 	def save(self, filename):
-		file = open(filename, 'w')
-		file.write(self.txt)
-		file.close()
-	
-if len(sys.argv) < 2:
-	print('Usage: python3 it2amk.py <module_file> <flags>')
-	sys.exit(1)
-elif len(sys.argv) >= 2 and len(sys.argv) % 2 != 0:
-	print('Error: Missing flag argument.')
-	sys.exit(1)
-	
-it = pyIT.ITfile()
-it.open(sys.argv[1])
-Config.get_module_flags(it)
-	
-i = 2
-while i < len(sys.argv):
-	flag = sys.argv[i]
-	arg = sys.argv[i + 1]
-	
-	try:
-		Config.set_flag(flag, arg)
-	except ValueError as e:
-		print('Error: ' + str(e))
-		sys.exit(1)
-	except KeyError as e:
-		print('Error: ' + str(e))
-		sys.exit(1)
-	
-	i += 2
-	
-try:
-	evtbl = EventTable(it)
-	mml = MML(evtbl)
-	mml.save('music/' + sys.argv[1].split('.')[0].replace('\\', '/').split('/')[-1] + '.txt')
-except CompileErrorException as e:
-	print('Error:', e)
+		with open(filename, 'w') as file:
+			file.write(self.txt)
+
+if __name__ == "__main__":
+	main()
